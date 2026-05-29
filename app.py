@@ -15,7 +15,6 @@ st.set_page_config(
 )
 
 # 2. Carregar Dados Dinamicamente do JSON
-@st.cache_data
 def carregar_dados():
     with open("dados.json", "r", encoding="utf-8") as file:
         return json.load(file)
@@ -511,39 +510,45 @@ elif secao == "lojinha":
     </div>
     """)
     
-    # Grid de Produtos (Layout de vitrine de revista)
-    cols_produtos = st.columns(len(dados['produtos']))
+    # Grid de Produtos (3 por linha para evitar achatamento e cortes)
+    produtos = dados['produtos']
+    cols_per_row = 3
     
-    for idx, prod in enumerate(dados['produtos']):
-        prod_img_b64 = carregar_imagem_base64(prod['imagem'])
+    for i in range(0, len(produtos), cols_per_row):
+        chunk = produtos[i:i+cols_per_row]
+        cols_produtos = st.columns(cols_per_row)
         
-        with cols_produtos[idx]:
-            msg_produto = dados['contato']['mensagem_produto'].format(produto=prod['nome'])
-            link_compra = gerar_link_whatsapp(
-                dados['contato']['telefone_whatsapp'],
-                msg_produto
-            )
+        for idx, prod in enumerate(chunk):
+            prod_img_b64 = carregar_imagem_base64(prod['imagem'])
+            mime_type = "image/jpeg" if prod['imagem'].lower().endswith(('.jpg', '.jpeg')) else "image/png"
             
-            # Renderiza o card do produto inteiro em um único bloco HTML para evitar quebras
-            render_markdown(f"""
-            <div class='luxury-card fade-in' style='text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between;'>
-                <div>
-                    <div style="border: 1px solid rgba(230, 194, 128, 0.12); padding: 15px; background: rgba(12,11,10,0.5); margin-bottom: 20px; text-align: center; display: flex; align-items: center; justify-content: center; height: 320px;">
-                        <img src="data:image/png;base64,{prod_img_b64}" style="max-height: 290px; max-width: 100%; object-fit: contain;">
+            with cols_produtos[idx]:
+                msg_produto = dados['contato']['mensagem_produto'].format(produto=prod['nome'])
+                link_compra = gerar_link_whatsapp(
+                    dados['contato']['telefone_whatsapp'],
+                    msg_produto
+                )
+                
+                # Renderiza o card do produto inteiro em um único bloco HTML
+                render_markdown(f"""
+                <div class='luxury-card fade-in' style='text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 30px;'>
+                    <div>
+                        <div style="border: 1px solid rgba(230, 194, 128, 0.12); padding: 15px; background: rgba(12,11,10,0.5); margin-bottom: 20px; text-align: center; display: flex; align-items: center; justify-content: center; height: 320px;">
+                            <img src="data:{mime_type};base64,{prod_img_b64}" style="max-height: 290px; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <span style="font-family: 'Tenor Sans', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.95rem; color: #FAF7F2; display: block; margin-bottom: 8px; min-height: 48px; line-height: 1.4;">
+                            {prod['nome']}
+                        </span>
+                        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: #A09386; min-height: 80px; line-height: 1.5; margin-bottom: 15px; text-align: center;">
+                            {prod['descricao']}
+                        </p>
+                        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; color: #E6C280; margin-bottom: 20px;">
+                            R$ {prod['preco']:.2f}
+                        </div>
                     </div>
-                    <span style="font-family: 'Tenor Sans', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.95rem; color: #FAF7F2; display: block; margin-bottom: 8px; min-height: 48px; line-height: 1.4;">
-                        {prod['nome']}
-                    </span>
-                    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: #A09386; min-height: 60px; line-height: 1.5; margin-bottom: 15px; text-align: center;">
-                        {prod['descricao']}
-                    </p>
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; color: #E6C280; margin-bottom: 20px;">
-                        R$ {prod['preco']:.2f}
-                    </div>
+                    <a href="{link_compra}" target="_blank" class="luxury-btn">Encomendar</a>
                 </div>
-                <a href="{link_compra}" target="_blank" class="luxury-btn">Encomendar</a>
-            </div>
-            """)
+                """)
 
 # ==========================================
 # SEÇÃO 4: CONTATO & LOCALIZAÇÃO

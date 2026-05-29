@@ -72,17 +72,52 @@
   "produtos": [
     {
       "id": "prod_1",
-      "nome": "Shampoo Reconstrutor Luminance (500ml)",
-      "descricao": "Limpa suavemente enquanto repõe massa capilar. Formulado com óleo de argan e proteínas da seda.",
-      "preco": 85.00,
-      "imagem": "assets/product_1.png"
+      "nome": "Queracis Pro Repair",
+      "descricao": "Reparador de cabelo a base de queratina e cistina molecular",
+      "preco": 35.00,
+      "imagem": "assets/prod_1.jpeg"
     },
     {
       "id": "prod_2",
-      "nome": "Óleo Capilar Aura Gold Elixir (50ml)",
-      "descricao": "Sérum finalizador ultraleve com partículas de brilho 24K. Reduz o frizz e protege contra o calor do secador.",
-      "preco": 110.00,
-      "imagem": "assets/product_2.png"
+      "nome": "Prime One 10 em 1",
+      "descricao": "Flúido 10 em 1: Controla o Frizz, Previne pontas duplas, Oferece proteção térmica, Protege dos raios UVA e UVB, Mantém o penteado por mais tempo, Controla o volume, Repara os Danos, Condiciona, Desembaraça, Efeito memória.",
+      "preco": 65.00,
+      "imagem": "assets/prod_2.jpeg"
+    },
+    {
+      "id": "prod_3",
+      "nome": "Prime One Oil",
+      "descricao": "Óleo capilar de tratamento Prime One.",
+      "preco": 65.00,
+      "imagem": "assets/prod_3.jpeg"
+    },
+    {
+      "id": "prod_4",
+      "nome": "Máscara TH Bronze 24k, TH Gold 24k ou TH Prata 24k",
+      "descricao": "Máscara de tratamento TH Bronze 24k, TH Gold 24k ou TH Prata 24k",
+      "preco": 85.00,
+      "imagem": "assets/prod_4.jpeg"
+    },
+    {
+      "id": "prod_5",
+      "nome": "Kit Pitaya Frutoterapia",
+      "descricao": "A linha Pitaya da Tec Holand combina o poder do extrado de pitaya, óleo de Argan e semi di lino para proporcionar nutrição intensa, brilho espelhado e revitalização profunda. Com ação antioxidante, antifrizz e proteção térmica.",
+      "preco": 149.90,
+      "imagem": "assets/prod_5.jpeg"
+    },
+    {
+      "id": "prod_6",
+      "nome": "Kit Pós-Química",
+      "descricao": "A linha Tec Holand pós-química foi criada para restaurar e proteger cabelos quimicamente tratados. Com óleo de semi di lino, manteiga de karité e Garden Active Oil, oferece reconstrução profunda, nutrição intensa e ação antifrizz.",
+      "preco": 169.90,
+      "imagem": "assets/prod_6.jpeg"
+    },
+    {
+      "id": "prod_7",
+      "nome": "Kit Monoxin",
+      "descricao": "Kit antiqueda - Máscara, Shampoo, Tônico e Cápsulas. Com chá de goiabeira e um Blend de Vitamina A + B3, se prova o melhor tratamento para queda de cabelo.",
+      "preco": 180.00,
+      "imagem": "assets/prod_7.jpeg"
     }
   ],
   "contato": {
