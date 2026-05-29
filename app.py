@@ -326,6 +326,10 @@ with st.sidebar:
     for horario in dados['contato']['horarios']:
         st.markdown(f"<p style='font-size: 0.85rem; color: #A09386; margin: 4px 0;'>{horario}</p>", unsafe_allow_html=True)
         
+    st.markdown("<div class='gold-divider' style='margin: 20px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<p style='font-family: \"Tenor Sans\", sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #FAF7F2; margin-bottom: 10px;'>Formas de Pagamento</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.85rem; color: #A09386; margin: 4px 0;'>Aceitamos Pix, cartão ou dinheiro</p>", unsafe_allow_html=True)
+        
     st.markdown("<br>", unsafe_allow_html=True)
     # Botão de Ação Rápida WhatsApp na Sidebar
     link_geral_whatsapp = gerar_link_whatsapp(
