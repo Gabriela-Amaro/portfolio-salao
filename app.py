@@ -446,13 +446,13 @@ elif secao == "servicos":
             <div class='fade-in' style='display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;'>
                 <div>
                     <div style='border: 1px solid rgba(230, 194, 128, 0.15); padding: 10px; background: rgba(12,11,10,0.3); text-align: center;'>
-                        <img src="data:image/jpeg;base64,{antes_b64}" style="width: 100%; height: auto; max-height: 480px; object-fit: cover;">
+                        <img src="data:image/jpeg;base64,{antes_b64}" style="width: 100%; height: 480px; object-fit: contain;">
                     </div>
                     <p style='text-align: center; font-family: "Tenor Sans", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: #A09386; margin-top: 10px;'>Antes</p>
                 </div>
                 <div>
                     <div style='border: 1px solid rgba(230, 194, 128, 0.3); padding: 10px; background: rgba(12,11,10,0.3); text-align: center;'>
-                        <img src="data:image/jpeg;base64,{depois_b64}" style="width: 100%; height: auto; max-height: 480px; object-fit: cover;">
+                        <img src="data:image/jpeg;base64,{depois_b64}" style="width: 100%; height: 480px; object-fit: contain;">
                     </div>
                     <p style='text-align: center; font-family: "Tenor Sans", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: #E6C280; font-weight: bold; margin-top: 10px;'>Depois (Transformação)</p>
                 </div>
