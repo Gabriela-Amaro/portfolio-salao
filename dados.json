@@ -13,18 +13,13 @@
         "descricao": "Tratamos seu cabelo respeitando a saúde dos fios, utilizando apenas produtos dermatologicamente testados e livres de agressões desnecessárias."
       }
     ],
-    "transparencia_texto": "Nós não economizamos na saúde do seu cabelo e pele. Por isso, trabalhamos exclusivamente com marcas de renome internacional e fórmulas de altíssima performance. Veja as marcas premium que você encontrará em nossa bancada:"
+    "transparencia_texto": "Nós não economizamos na saúde do seu cabelo e pele. Por isso, trabalhamos exclusivamente com marcas de renome e fórmulas de altíssima performance. Veja as marcas premium que você encontrará em nossa bancada:"
   },
   "marcas": [
     {
-      "nome": "Keratin Luxe Paris",
-      "logo": "assets/brand_1.png",
-      "descricao": "Tratamentos intensivos de queratina e reconstrução molecular profunda para fios danificados."
-    },
-    {
-      "nome": "BioLuxe Organics",
-      "logo": "assets/brand_2.png",
-      "descricao": "Fórmulas veganas e orgânicas com ativos botânicos de alta performance para nutrição profunda."
+      "nome": "Tec Holand",
+      "logo": "assets/techoland.jpg",
+      "descricao": "Tratamentos intensivos, reconstrução molecular profunda para fios danificados, produtos profissionais e de alta performance."
     }
   ],
   "portfolio": [
