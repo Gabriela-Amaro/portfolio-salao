@@ -1,0 +1,5 @@
+.venv/
+.agent/
+rascunhos/
+walkthrough.md
+__pycache__/

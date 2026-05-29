@@ -1,0 +1,99 @@
+{
+  "salao": {
+    "nome": "Dinara Soares Beauty",
+    "slogan": "Realçamos sua beleza única com sofisticação e cuidado premium.",
+    "sobre_curto": "No Dinara Soares Beauty, acreditamos que cuidar de si não é um luxo, mas uma necessidade essencial de bem-estar. Em um ambiente aconchegante, moderno e sofisticado, estamos prontos para revelar o brilho único que há em você.",
+    "valores": [
+      {
+        "titulo": "Conforto & Sofisticação",
+        "descricao": "Ambiente climatizado, atendimento premium e café especial para que sua experiência seja relaxante e única."
+      },
+      {
+        "titulo": "Saúde Capilar",
+        "descricao": "Tratamos seu cabelo respeitando a saúde dos fios, utilizando apenas produtos dermatologicamente testados e livres de agressões desnecessárias."
+      }
+    ],
+    "transparencia_texto": "Nós não economizamos na saúde do seu cabelo e pele. Por isso, trabalhamos exclusivamente com marcas de renome internacional e fórmulas de altíssima performance. Veja as marcas premium que você encontrará em nossa bancada:"
+  },
+  "marcas": [
+    {
+      "nome": "Keratin Luxe Paris",
+      "logo": "assets/brand_1.png",
+      "descricao": "Tratamentos intensivos de queratina e reconstrução molecular profunda para fios danificados."
+    },
+    {
+      "nome": "BioLuxe Organics",
+      "logo": "assets/brand_2.png",
+      "descricao": "Fórmulas veganas e orgânicas com ativos botânicos de alta performance para nutrição profunda."
+    }
+  ],
+  "portfolio": [
+    {
+      "tipo": "imagem",
+      "titulo": "Transformação Balayage Mel & Iluminação Capilar",
+      "descricao": "Correção de cor e aplicação de técnica de mechas balayage para iluminar o rosto com naturalidade, mantendo a integridade e brilho dos fios.",
+      "antes": "assets/before.png",
+      "depois": "assets/after.png"
+    },
+    {
+      "tipo": "video",
+      "titulo": "Movimento e Brilho Pós-Tratamento",
+      "descricao": "Resultado em movimento do nosso tratamento de reconstrução térmica e escova modelada.",
+      "video_url": "https://assets.mixkit.co/videos/preview/mixkit-beautiful-woman-touching-her-healthy-hair-40030-large.mp4"
+    }
+  ],
+  "categorias_servicos": [
+    {
+      "categoria": "Cabelo & Estilo",
+      "itens": [
+        {
+          "nome": "Corte Aura Signature",
+          "descricao": "Corte personalizado incluindo diagnóstico capilar, lavagem com shampoo premium, massagem capilar e escova finalizadora.",
+          "preco": 120.00
+        },
+        {
+          "nome": "Mechas & Balayage Iluminada",
+          "descricao": "Técnica de clareamento sutil e natural. Inclui reconstrução protetora durante a descoloração e tonalização personalizada.",
+          "preco": 380.00
+        },
+        {
+          "nome": "Terapia de Reconstrução Profunda",
+          "descricao": "Tratamento de choque para cabelos extremamente danificados, repondo aminoácidos e lipídeos essenciais.",
+          "preco": 160.00
+        },
+        {
+          "nome": "Escova Modelada",
+          "descricao": "Lavagem com tratamento rápido e escova com ondas sofisticadas duradouras.",
+          "preco": 70.00
+        }
+      ]
+    }
+  ],
+  "produtos": [
+    {
+      "id": "prod_1",
+      "nome": "Shampoo Reconstrutor Luminance (500ml)",
+      "descricao": "Limpa suavemente enquanto repõe massa capilar. Formulado com óleo de argan e proteínas da seda.",
+      "preco": 85.00,
+      "imagem": "assets/product_1.png"
+    },
+    {
+      "id": "prod_2",
+      "nome": "Óleo Capilar Aura Gold Elixir (50ml)",
+      "descricao": "Sérum finalizador ultraleve com partículas de brilho 24K. Reduz o frizz e protege contra o calor do secador.",
+      "preco": 110.00,
+      "imagem": "assets/product_2.png"
+    }
+  ],
+  "contato": {
+    "telefone_whatsapp": "5538991617240",
+    "mensagem_agendamento": "Olá! Vim pelo aplicativo do Dinara Soares Beaty e gostaria de fazer um agendamento / tirar uma dúvida.",
+    "mensagem_produto": "Olá! Gostaria de encomendar o produto {produto} do catálogo do aplicativo.",
+    "endereco": "Av. Montes Claros, 763 - Pedras de Maria da Cruz, MG, 39492-000",
+    "horarios": [
+      "Segunda a Sábado: 09h às 17h",
+      "Domingo: Fechado"
+    ],
+    "link_maps": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3842.718345206853!2d-44.3953121!3d-15.6066902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7543337295288dd%3A0x6000bdb998a5bf7!2sVictoria%20Santana%20Beauty%20Studio!5e0!3m2!1spt-BR!2sbr!4v1779980286584!5m2!1spt-BR!2sbr"
+  }
+}
