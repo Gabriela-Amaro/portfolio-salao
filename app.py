@@ -475,7 +475,9 @@ elif secao == "servicos":
         with tabs_categorias[idx_cat]:
             render_markdown("<div class='fade-in' style='padding-top: 15px;'>")
             for item in cat["itens"]:
-                msg_servico = f"Olá! Vim pelo aplicativo e gostaria de agendar o serviço '{item['nome']}' (R$ {item['preco']:.2f})."
+                preco_val = item['preco']
+                preco_str = f"R$ {preco_val:.2f}" if isinstance(preco_val, (int, float)) else str(preco_val)
+                msg_servico = f"Olá! Vim pelo aplicativo e gostaria de agendar o serviço '{item['nome']}' ({preco_str})."
                 link_whatsapp = gerar_link_whatsapp(
                     dados['contato']['telefone_whatsapp'],
                     msg_servico
@@ -491,7 +493,7 @@ elif secao == "servicos":
                         </p>
                     </div>
                     <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; min-width: 130px;">
-                        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: #E6C280;">R$ {item['preco']:.2f}</span>
+                        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: #E6C280;">{preco_str}</span>
                         <a href="{link_whatsapp}" target="_blank" class="luxury-btn" style="padding: 6px 16px !important; font-size: 0.7rem !important; letter-spacing: 1.5px !important;">Reservar</a>
                     </div>
                 </div>

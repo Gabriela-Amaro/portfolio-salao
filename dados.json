@@ -47,24 +47,24 @@
       "categoria": "Cabelo & Estilo",
       "itens": [
         {
-          "nome": "Corte Aura Signature",
-          "descricao": "Corte personalizado incluindo diagnóstico capilar, lavagem com shampoo premium, massagem capilar e escova finalizadora.",
-          "preco": 120.00
+          "nome": "Progressiva",
+          "descricao": "Conquiste o liso perfeito e livre-se do frizz! Nossa progressiva alinha os fios, reduz drasticamente o volume e traz muita praticidade para o seu dia a dia. O resultado é um cabelo com balanço natural, toque sedoso e um brilho intenso que dura por muito tempo.",
+          "preco": "A partir de R$ 130,00"
         },
         {
-          "nome": "Mechas & Balayage Iluminada",
-          "descricao": "Técnica de clareamento sutil e natural. Inclui reconstrução protetora durante a descoloração e tonalização personalizada.",
-          "preco": 380.00
+          "nome": "Coloração",
+          "descricao": "Renove seu visual ou mantenha sua cor sempre impecável! Seja para um retoque de raiz, cobertura dos fios brancos ou para realçar a sua tonalidade favorita, oferecemos uma aplicação cuidadosa para garantir uma cor vibrante e cheia de vida.",
+          "preco": "A partir de R$ 15,00"
         },
         {
-          "nome": "Terapia de Reconstrução Profunda",
-          "descricao": "Tratamento de choque para cabelos extremamente danificados, repondo aminoácidos e lipídeos essenciais.",
-          "preco": 160.00
+          "nome": "Escova",
+          "descricao": "Saia do salão pronta para arrasar em qualquer ocasião. Nossa escova proporciona um acabamento polido e profissional, modelando os fios de acordo com o seu estilo, selando as cutículas e garantindo um caimento perfeito e sem frizz.",
+          "preco": "A partir de R$ 35,00"
         },
         {
-          "nome": "Escova Modelada",
-          "descricao": "Lavagem com tratamento rápido e escova com ondas sofisticadas duradouras.",
-          "preco": 70.00
+          "nome": "Escova e Hidratação",
+          "descricao": "O combo perfeito entre saúde capilar e beleza! Primeiro, devolvemos a maciez e os nutrientes que o seu cabelo precisa com uma hidratação profunda. Logo depois, finalizamos com uma escova impecável, deixando seus fios fortes, nutridos, protegidos e radiantes.",
+          "preco": "A partir de R$ 40,00"
         }
       ]
     }
