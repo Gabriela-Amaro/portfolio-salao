@@ -30,16 +30,16 @@
   "portfolio": [
     {
       "tipo": "imagem",
-      "titulo": "Transformação Balayage Mel & Iluminação Capilar",
-      "descricao": "Correção de cor e aplicação de técnica de mechas balayage para iluminar o rosto com naturalidade, mantendo a integridade e brilho dos fios.",
-      "antes": "assets/before.png",
-      "depois": "assets/after.png"
+      "titulo": "Transformação Progressiva sem Formol",
+      "descricao": "Progressiva sem formol de alta performance. Realinhamento capilar com brilho intenso e movimento natural",
+      "antes": "assets/antes.jpeg",
+      "depois": "assets/depois.jpeg"
     },
     {
       "tipo": "video",
-      "titulo": "Movimento e Brilho Pós-Tratamento",
-      "descricao": "Resultado em movimento do nosso tratamento de reconstrução térmica e escova modelada.",
-      "video_url": "https://assets.mixkit.co/videos/preview/mixkit-beautiful-woman-touching-her-healthy-hair-40030-large.mp4"
+      "titulo": "Hidratação e Escova",
+      "descricao": "Hidratação profunda com ozônio terapia e escova com finalização em ondas.",
+      "video_url": "assets/video.mp4"
     }
   ],
   "categorias_servicos": [

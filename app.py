@@ -273,6 +273,19 @@ render_markdown("""
         border-top: 1px solid rgba(230, 194, 128, 0.15);
         margin-top: 60px;
     }
+    
+    /* Limitar tamanho máximo e aplicar moldura no player de vídeo do Streamlit */
+    video[data-testid="stVideo"], .stVideo {
+        max-width: 320px !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 10px auto 30px auto !important;
+        border: 1px solid rgba(230, 194, 128, 0.2) !important;
+        padding: 10px !important;
+        background: rgba(12,11,10,0.4) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+        display: block !important;
+    }
 </style>
 """)
 
@@ -448,10 +461,8 @@ elif secao == "servicos":
             """)
             
         elif item['tipo'] == "video":
-            # Exibição de Vídeo com Moldura Dourada
-            st.markdown("<div class='fade-in' style='border: 1px solid rgba(230, 194, 128, 0.2); padding: 12px; background: rgba(12,11,10,0.4); margin-bottom: 25px;'>", unsafe_allow_html=True)
-            st.video(item['video_url'])
-            st.markdown("</div>", unsafe_allow_html=True)
+            # Exibição de Vídeo com tamanho e moldura controlados via CSS global
+            st.video(item['video_url'], autoplay=True, loop=True, muted=True)
             
         st.markdown("<div class='gold-divider' style='margin: 40px 0;'></div>", unsafe_allow_html=True)
         
