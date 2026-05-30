@@ -308,7 +308,7 @@ with st.sidebar:
     
     # Navegação do App
     paginas = {
-        "Essência": "sobre",
+        "Sobre": "sobre",
         "Serviços": "servicos",
         "Catálogo de produtos": "lojinha",
         "Localização / Contato": "contato"
