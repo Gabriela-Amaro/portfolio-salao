@@ -261,6 +261,48 @@ render_markdown("""
         box-shadow: 0 0 15px rgba(230, 194, 128, 0.15) !important;
     }
 
+    .floating-schedule-btn {
+        position: fixed !important;
+        right: clamp(18px, 4vw, 42px) !important;
+        bottom: clamp(18px, 4vw, 34px) !important;
+        z-index: 999999 !important;
+        width: auto !important;
+        max-width: min(290px, calc(100vw - 36px)) !important;
+        padding: 13px 20px !important;
+        border: 1px solid rgba(241, 215, 154, 0.62) !important;
+        background: linear-gradient(135deg, rgba(230, 194, 128, 0.96), rgba(197, 168, 128, 0.92)) !important;
+        color: #090807 !important;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.38), 0 0 22px rgba(230, 194, 128, 0.18) !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
+    }
+
+    .floating-schedule-btn:hover {
+        background: linear-gradient(135deg, #F1D79A, #D3B478) !important;
+        color: #080706 !important;
+        transform: translateY(-2px) !important;
+    }
+
+    .floating-schedule-btn.is-hidden {
+        opacity: 0 !important;
+        transform: translateY(14px) !important;
+        pointer-events: none !important;
+    }
+
+    #agende-seu-horario {
+        scroll-margin-top: 24px;
+    }
+
+    @media (max-width: 767px) {
+        .floating-schedule-btn {
+            left: 18px !important;
+            right: 18px !important;
+            bottom: 18px !important;
+            max-width: none !important;
+        }
+    }
+
     /* Cards de Vidro Obsidiana (Glassmorphism Escuro) */
     .luxury-card {
         background: rgba(18, 15, 14, 0.6);
@@ -488,6 +530,7 @@ elif secao == "servicos":
         <h1 class='editorial-title'>Nossos Serviços</h1>
         <div class='gold-divider'></div>
     </div>
+    <a href="#agende-seu-horario" class="luxury-btn floating-schedule-btn" id="floating-schedule-btn">Agende o seu horário</a>
     """)
     
     # Galeria e Portfólio    
@@ -524,7 +567,7 @@ elif secao == "servicos":
         st.markdown("<div class='gold-divider' style='margin: 40px 0;'></div>", unsafe_allow_html=True)
         
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<div style='margin-bottom: 25px;'><h3 style='font-family: \"Cormorant Garamond\", serif; font-size: 2rem; border-bottom: 1px solid rgba(230, 194, 128, 0.1); padding-bottom: 10px;'>Agende o seu horário</h3></div>", unsafe_allow_html=True)
+    st.markdown("<div id='agende-seu-horario'></div><div style='margin-bottom: 25px;'><h3 style='font-family: \"Cormorant Garamond\", serif; font-size: 2rem; border-bottom: 1px solid rgba(230, 194, 128, 0.1); padding-bottom: 10px;'>Agende o seu horário</h3></div>", unsafe_allow_html=True)
     
     # Tabela de Serviços Organizada em Tabs (Menu Michelin Style)
     tabs_categorias = st.tabs([cat["categoria"] for cat in dados["categorias_servicos"]])
@@ -557,6 +600,66 @@ elif secao == "servicos":
                 </div>
                 """)
             st.markdown("</div>", unsafe_allow_html=True)
+
+    st.components.v1.html(
+        """
+        <script>
+            const iframe = window.frameElement;
+            if (iframe) {
+                iframe.style.display = 'none';
+                const c = iframe.closest('.element-container');
+                if (c) { c.style.display = 'none'; c.style.margin = '0'; c.style.padding = '0'; }
+            }
+
+            try {
+                const doc = window.parent.document;
+                const bindFloatingScheduleButton = () => {
+                    const button = doc.querySelector('#floating-schedule-btn');
+                    const target = doc.querySelector('#agende-seu-horario');
+                    if (!button || !target) return false;
+
+                    if (window.parent._scheduleObserver) {
+                        window.parent._scheduleObserver.disconnect();
+                    }
+                    if (window.parent._scheduleVisibilityHandler) {
+                        window.parent.removeEventListener('scroll', window.parent._scheduleVisibilityHandler);
+                        window.parent.removeEventListener('resize', window.parent._scheduleVisibilityHandler);
+                    }
+
+                    window.parent._scheduleVisibilityHandler = () => {
+                        const rect = target.getBoundingClientRect();
+                        const reachedSchedule = rect.top <= window.parent.innerHeight * 0.72;
+                        button.classList.toggle('is-hidden', reachedSchedule);
+                    };
+
+                    window.parent._scheduleObserver = new window.parent.IntersectionObserver(
+                        () => window.parent._scheduleVisibilityHandler(),
+                        { root: null, threshold: [0, 0.01, 0.15, 0.35] }
+                    );
+
+                    window.parent._scheduleObserver.observe(target);
+                    window.parent.addEventListener('scroll', window.parent._scheduleVisibilityHandler, { passive: true });
+                    window.parent.addEventListener('resize', window.parent._scheduleVisibilityHandler, { passive: true });
+                    window.parent._scheduleVisibilityHandler();
+                    return true;
+                };
+
+                if (!bindFloatingScheduleButton()) {
+                    const waitForScheduleButton = window.parent.setInterval(() => {
+                        if (bindFloatingScheduleButton()) {
+                            window.parent.clearInterval(waitForScheduleButton);
+                        }
+                    }, 100);
+                    window.parent.setTimeout(() => window.parent.clearInterval(waitForScheduleButton), 3000);
+                }
+            } catch (e) {
+                console.error('Floating schedule button error:', e);
+            }
+        </script>
+        """,
+        height=0,
+        width=0
+    )
 
 # ==========================================
 # SEÇÃO 3: LOJINHA / O CATÁLOGO
