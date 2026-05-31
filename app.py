@@ -114,42 +114,98 @@ render_markdown("""
         color: #FAF7F2 !important;
     }
 
-    /* Customização dos Radio Buttons da Sidebar para Menu Limpo */
+    /* Navegação da Sidebar com indicador lateral */
+    div[data-testid="stSidebarUserContent"] div[data-testid="stRadio"] {
+        margin-top: 8px !important;
+    }
+
+    div[data-testid="stSidebarUserContent"] div[data-testid="stRadio"] > div {
+        gap: 8px !important;
+    }
+
     div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] {
-        padding: 10px 14px !important;
-        background-color: transparent !important;
-        border-radius: 0px !important;
-        border-left: 2px solid transparent !important;
-        transition: all 0.3s ease !important;
+        position: relative !important;
+        width: 100% !important;
+        min-height: 44px !important;
+        padding: 11px 14px 11px 18px !important;
+        background: linear-gradient(90deg, rgba(133, 128, 122, 0.13) 0%, rgba(133, 128, 122, 0.045) 58%, rgba(133, 128, 122, 0) 100%) !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        cursor: pointer !important;
+        transition: background 0.25s ease, transform 0.25s ease !important;
+    }
+
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 8px !important;
+        bottom: 8px !important;
+        width: 4px !important;
+        border-radius: 999px !important;
+        background: #535660 !important;
+        box-shadow: 0 0 0 1px rgba(250, 247, 242, 0.025) !important;
+        transition: background 0.25s ease, box-shadow 0.25s ease, top 0.25s ease, bottom 0.25s ease !important;
     }
     
     div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:hover {
-        background-color: rgba(230, 194, 128, 0.03) !important;
-        border-left: 2px solid rgba(230, 194, 128, 0.4) !important;
+        background: linear-gradient(90deg, rgba(151, 145, 137, 0.18) 0%, rgba(151, 145, 137, 0.07) 58%, rgba(151, 145, 137, 0) 100%) !important;
+        transform: translateX(2px) !important;
+    }
+
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:hover::before {
+        background: #777B86 !important;
     }
     
-    /* Esconder o círculo nativo do radio para parecer lista de links */
-    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] div[role="presentation"] {
+    /* Esconder o controle nativo do radio */
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] input,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] div[role="presentation"],
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] > div:first-child {
         display: none !important;
     }
     
     /* Estilo do Texto do Menu */
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] p,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"] span,
     div[data-testid="stSidebarUserContent"] .st-ae {
         font-family: 'Tenor Sans', sans-serif !important;
         text-transform: uppercase !important;
-        letter-spacing: 2px !important;
-        font-size: 0.85rem !important;
-        color: #A09386 !important;
+        letter-spacing: 1.8px !important;
+        font-size: 0.8rem !important;
+        line-height: 1.45 !important;
+        color: #B8B2AB !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
     }
     
     /* Link Ativo */
-    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"] {
-        border-left: 2px solid #E6C280 !important;
-        background-color: rgba(230, 194, 128, 0.06) !important;
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"],
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input:checked),
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input[tabindex="0"]) {
+        background: linear-gradient(90deg, rgba(230, 194, 128, 0.34) 0%, rgba(197, 168, 128, 0.18) 58%, rgba(197, 168, 128, 0.04) 100%) !important;
+        box-shadow: inset 0 0 0 1px rgba(230, 194, 128, 0.08), 0 0 16px rgba(230, 194, 128, 0.08) !important;
+    }
+
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"]::before,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input:checked)::before,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input[tabindex="0"])::before {
+        top: 6px !important;
+        bottom: 6px !important;
+        background: linear-gradient(180deg, #F1D79A 0%, #C5A880 100%) !important;
+        box-shadow: 0 0 12px rgba(230, 194, 128, 0.22) !important;
     }
     
-    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"] .st-ae {
-        color: #E6C280 !important;
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"] p,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"] span,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"][aria-checked="true"] .st-ae,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input:checked) p,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input:checked) span,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input:checked) .st-ae,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input[tabindex="0"]) p,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input[tabindex="0"]) span,
+    div[data-testid="stSidebarUserContent"] label[data-baseweb="radio"]:has(input[tabindex="0"]) .st-ae {
+        color: #F1D79A !important;
         font-weight: 500 !important;
     }
 
@@ -650,6 +706,10 @@ st.components.v1.html(
 
             const getCollapseBtn = () => doc.querySelector('[data-testid="stSidebarCollapseButton"] button');
             const getExpandBtn = () => doc.querySelector('button[data-testid="stExpandSidebarButton"]');
+            const collapseSidebar = () => {
+                const btn = getCollapseBtn();
+                if (btn) btn.click();
+            };
 
             // Lê o valor (índice) do rádio selecionado na sidebar
             const getSelectedRadio = () => {
@@ -657,7 +717,26 @@ st.components.v1.html(
                 return checked ? checked.value : null;
             };
 
+            const bindSelectedRadioClose = () => {
+                const labels = doc.querySelectorAll('section[data-testid="stSidebar"] [data-testid="stRadio"] label[data-baseweb="radio"]');
+                labels.forEach((label) => {
+                    if (label.dataset.closeBound === 'true') return;
+                    label.dataset.closeBound = 'true';
+
+                    label.addEventListener('click', () => {
+                        const input = label.querySelector('input');
+                        const wasSelected = label.getAttribute('aria-checked') === 'true'
+                            || (input && (input.checked || input.getAttribute('tabindex') === '0'));
+                        if (wasSelected && isMobile()) {
+                            window.parent.setTimeout(collapseSidebar, 80);
+                        }
+                    });
+                });
+            };
+
             if (isMobile()) {
+                bindSelectedRadioClose();
+
                 // ============================================================
                 // Detectar mudança de página: se o rádio mudou → fechar sidebar
                 // ============================================================
@@ -676,7 +755,7 @@ st.components.v1.html(
                             const btn = getCollapseBtn();
                             if (btn) {
                                 clearInterval(waitForBtn);
-                                btn.click();
+                                collapseSidebar();
                             }
                         }, 50);
                         window.parent.setTimeout(() => clearInterval(waitForBtn), 3000);
@@ -712,4 +791,3 @@ st.components.v1.html(
     height=0,
     width=0
 )
-
