@@ -365,7 +365,7 @@ with st.sidebar:
     # Navegação do App
     paginas = {
         "Sobre": "sobre",
-        "Serviços": "servicos",
+        "Catálogo de Serviços": "servicos",
         "Catálogo de produtos": "lojinha",
         "Localização / Contato": "contato"
     }
@@ -485,7 +485,7 @@ elif secao == "servicos":
     render_markdown("""
     <div class='fade-in' style='text-align: center; padding: 30px 0;'>
         <span class='editorial-subtitle'>A Arte em Movimento</span>
-        <h1 class='editorial-title'>Serviços</h1>
+        <h1 class='editorial-title'>Nossos Serviços</h1>
         <div class='gold-divider'></div>
     </div>
     """)
@@ -524,7 +524,7 @@ elif secao == "servicos":
         st.markdown("<div class='gold-divider' style='margin: 40px 0;'></div>", unsafe_allow_html=True)
         
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<div style='margin-bottom: 25px;'><h3 style='font-family: \"Cormorant Garamond\", serif; font-size: 2rem; border-bottom: 1px solid rgba(230, 194, 128, 0.1); padding-bottom: 10px;'>Menu de Serviços</h3></div>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom: 25px;'><h3 style='font-family: \"Cormorant Garamond\", serif; font-size: 2rem; border-bottom: 1px solid rgba(230, 194, 128, 0.1); padding-bottom: 10px;'>Agende o seu horário</h3></div>", unsafe_allow_html=True)
     
     # Tabela de Serviços Organizada em Tabs (Menu Michelin Style)
     tabs_categorias = st.tabs([cat["categoria"] for cat in dados["categorias_servicos"]])
