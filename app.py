@@ -429,14 +429,12 @@ elif secao == "servicos":
     render_markdown("""
     <div class='fade-in' style='text-align: center; padding: 30px 0;'>
         <span class='editorial-subtitle'>A Arte em Movimento</span>
-        <h1 class='editorial-title'>Portfólio & Serviços</h1>
+        <h1 class='editorial-title'>Serviços</h1>
         <div class='gold-divider'></div>
     </div>
     """)
     
-    # Galeria e Portfólio
-    st.markdown("<div style='margin-bottom: 20px;'><h3 style='font-family: \"Cormorant Garamond\", serif; font-size: 2rem; border-bottom: 1px solid rgba(230, 194, 128, 0.1); padding-bottom: 10px;'>Portfólio</h3></div>", unsafe_allow_html=True)
-    
+    # Galeria e Portfólio    
     for item in dados['portfolio']:
         st.markdown(f"<h5 style='font-family: \"Tenor Sans\", sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.95rem; color: #FAF7F2;'>{item['titulo']}</h5>", unsafe_allow_html=True)
         st.markdown(f"<p style='color:#A09386; font-family: \"Cormorant Garamond\", serif; font-style: italic; font-size: 1.15rem; margin-bottom: 20px;'>{item['descricao']}</p>", unsafe_allow_html=True)
@@ -633,3 +631,85 @@ render_markdown(f"""
     </p>
 </div>
 """)
+
+# Script para abrir a sidebar no mobile e fechar ao selecionar uma página
+st.components.v1.html(
+    """
+    <script>
+        // Esconder o iframe do componente
+        const iframe = window.frameElement;
+        if (iframe) {
+            iframe.style.display = 'none';
+            const c = iframe.closest('.element-container');
+            if (c) { c.style.display = 'none'; c.style.margin = '0'; c.style.padding = '0'; }
+        }
+
+        try {
+            const doc = window.parent.document;
+            const isMobile = () => window.parent.innerWidth < 768;
+
+            const getCollapseBtn = () => doc.querySelector('[data-testid="stSidebarCollapseButton"] button');
+            const getExpandBtn = () => doc.querySelector('button[data-testid="stExpandSidebarButton"]');
+
+            // Lê o valor (índice) do rádio selecionado na sidebar
+            const getSelectedRadio = () => {
+                const checked = doc.querySelector('section[data-testid="stSidebar"] [data-testid="stRadio"] input[tabindex="0"]');
+                return checked ? checked.value : null;
+            };
+
+            if (isMobile()) {
+                // ============================================================
+                // Detectar mudança de página: se o rádio mudou → fechar sidebar
+                // ============================================================
+                const waitForRadio = setInterval(() => {
+                    const currentValue = getSelectedRadio();
+                    if (!currentValue) return; // DOM ainda carregando
+                    clearInterval(waitForRadio);
+
+                    const previousValue = window.parent._lastRadioValue;
+
+                    if (previousValue !== undefined && previousValue !== currentValue) {
+                        // O valor mudou = usuário navegou → fechar sidebar
+                        window.parent._lastRadioValue = currentValue;
+
+                        const waitForBtn = setInterval(() => {
+                            const btn = getCollapseBtn();
+                            if (btn) {
+                                clearInterval(waitForBtn);
+                                btn.click();
+                            }
+                        }, 50);
+                        window.parent.setTimeout(() => clearInterval(waitForBtn), 3000);
+
+                    } else if (previousValue === undefined) {
+                        // Primeiro carregamento: registrar valor e abrir sidebar
+                        window.parent._lastRadioValue = currentValue;
+
+                        const openCheck = setInterval(() => {
+                            const sidebar = doc.querySelector('section[data-testid="stSidebar"]');
+                            if (sidebar && sidebar.getAttribute('aria-expanded') === 'true') {
+                                clearInterval(openCheck);
+                                return;
+                            }
+                            const btn = getExpandBtn();
+                            if (btn) {
+                                btn.click();
+                                clearInterval(openCheck);
+                            }
+                        }, 200);
+                    } else {
+                        // Mesmo valor (rerun sem mudança de rádio): não faz nada
+                        window.parent._lastRadioValue = currentValue;
+                    }
+                }, 100);
+            }
+
+        } catch (e) {
+            console.error('Sidebar automation error:', e);
+        }
+    </script>
+    """,
+    height=0,
+    width=0
+)
+
