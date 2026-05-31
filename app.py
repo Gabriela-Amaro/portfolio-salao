@@ -713,25 +713,36 @@ st.components.v1.html(
 
             // Lê o valor (índice) do rádio selecionado na sidebar
             const getSelectedRadio = () => {
-                const checked = doc.querySelector('section[data-testid="stSidebar"] [data-testid="stRadio"] input[tabindex="0"]');
+                const checked = doc.querySelector('section[data-testid="stSidebar"] [data-testid="stRadio"] input:checked')
+                    || doc.querySelector('section[data-testid="stSidebar"] [data-testid="stRadio"] label[aria-checked="true"] input')
+                    || doc.querySelector('section[data-testid="stSidebar"] [data-testid="stRadio"] input[tabindex="0"]');
                 return checked ? checked.value : null;
             };
 
             const bindSelectedRadioClose = () => {
-                const labels = doc.querySelectorAll('section[data-testid="stSidebar"] [data-testid="stRadio"] label[data-baseweb="radio"]');
-                labels.forEach((label) => {
-                    if (label.dataset.closeBound === 'true') return;
-                    label.dataset.closeBound = 'true';
+                if (window.parent._selectedRadioCloseHandler) {
+                    doc.removeEventListener('pointerdown', window.parent._selectedRadioCloseHandler, true);
+                }
 
-                    label.addEventListener('click', () => {
-                        const input = label.querySelector('input');
-                        const wasSelected = label.getAttribute('aria-checked') === 'true'
-                            || (input && (input.checked || input.getAttribute('tabindex') === '0'));
-                        if (wasSelected && isMobile()) {
-                            window.parent.setTimeout(collapseSidebar, 80);
-                        }
-                    });
-                });
+                window.parent._selectedRadioCloseHandler = (event) => {
+                    if (!isMobile()) return;
+
+                    const label = event.target.closest('section[data-testid="stSidebar"] [data-testid="stRadio"] label[data-baseweb="radio"]');
+                    if (!label) return;
+
+                    const input = label.querySelector('input');
+                    const clickedValue = input ? input.value : null;
+                    const currentValue = getSelectedRadio() || window.parent._lastRadioValue;
+                    const isAlreadySelected = label.getAttribute('aria-checked') === 'true'
+                        || (input && input.checked)
+                        || (clickedValue !== null && clickedValue === currentValue);
+
+                    if (isAlreadySelected) {
+                        window.parent.setTimeout(collapseSidebar, 80);
+                    }
+                };
+
+                doc.addEventListener('pointerdown', window.parent._selectedRadioCloseHandler, true);
             };
 
             if (isMobile()) {
